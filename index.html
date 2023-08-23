@@ -1,0 +1,31 @@
+<html>
+<head>
+<script>
+// ボタンがクリックされたときに実行する関数
+function addAnswer() {
+  // 入力欄の値を取得する
+  var inputText = document.getElementById("text").value;
+  // 入力した文字をローカルストレージに保存する
+  localStorage.setItem("inputText", inputText);
+  // 出力先の要素に入力した文字を表示する
+  document.getElementById("answer").textContent = inputText;
+}
+
+// ページが読み込まれたときに実行する関数
+function loadAnswer() {
+  // ローカルストレージから入力した文字を取得する
+  var inputText = localStorage.getItem("inputText");
+  // 入力欄に反映させる
+  document.getElementById("text").value = inputText;
+  // 出力先の要素に表示する
+  document.getElementById("answer").textContent = inputText;
+}
+</script>
+</head>
+<body onload="loadAnswer()">
+<h1>好きな食べ物は何ですか？</h1>
+<input id="text" type="text" value=""/>
+<input type="button" value="送信" onclick="addAnswer()"/>
+<div id="answer"></div>
+</body>
+</html>
